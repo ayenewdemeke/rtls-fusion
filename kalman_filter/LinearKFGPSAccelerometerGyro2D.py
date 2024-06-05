@@ -1,6 +1,7 @@
 # sensor-fusion/kalman_filter/LinearKFGPSAccelerometerGyro2D.py
 
 import numpy as np
+import math
 
 class LinearKFGPSAccelerometerGyro2D:
     def __init__(self, initial_state, initial_covariance, process_noise, measurement_noise):
@@ -43,7 +44,7 @@ class LinearKFGPSAccelerometerGyro2D:
         G = np.array([0, 0, 0, 0, dt])
 
         # Predicted state
-        self.state = F @ self.state + B @ acceleration + G * angular_velocity
+        self.state = F @ self.state + B @ np.array(acceleration) + G * angular_velocity
 
         # Predicted covariance
         self.covariance = F @ self.covariance @ F.T + self.process_noise
@@ -54,12 +55,24 @@ class LinearKFGPSAccelerometerGyro2D:
         
         :param measurement: New measurement for [x_position, y_position].
         """
+        # Extract position measurements
+        gps_x, gps_y = measurement
+
+        # Compute yaw angle from the velocity estimates
+        vel_x, vel_y = self.state[2], self.state[3]
+        gps_yaw = math.atan2(vel_y, vel_x)
+
+        # Full measurement vector
+        measurement = [gps_x, gps_y, gps_yaw]
+
         # Measurement matrix
         H = np.array([[1, 0, 0, 0, 0],
-                      [0, 1, 0, 0, 0]])
+                      [0, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 1]])
 
         # Measurement residual
-        y = measurement - H @ self.state
+        Z = np.array(measurement)
+        y = Z - H @ self.state
 
         # Residual covariance
         S = H @ self.covariance @ H.T + self.measurement_noise

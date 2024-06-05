@@ -20,8 +20,9 @@ process_noise = [[1, 0, 0, 0, 0],
                  [0, 0, 0, 0, 1]]
 
 # Measurement noise covariance matrix
-measurement_noise = [[1, 0],
-                     [0, 1]]
+measurement_noise = [[1, 0, 0],
+                     [0, 1, 0],
+                     [0, 0, 1]]
 
 # Create the filter
 kf = LinearKFGPSAccelerometerGyro2D(initial_state, initial_covariance, process_noise, measurement_noise)
