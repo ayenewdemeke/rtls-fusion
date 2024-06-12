@@ -1,6 +1,6 @@
-# examples/kalman_filter/linear_kf_gps_accelerometer_2d.py
+# examples/kalman/linear_kf_gps_accelerometer_2d.py
 
-from kalman_filter import LinearKFGPSAccelerometer2D
+from sfusion.kalman import LinearKFGPSAccelerometer2D
 
 # Initial state [x_position, y_position, x_velocity, y_velocity]
 initial_state = [0, 0, 0, 0]

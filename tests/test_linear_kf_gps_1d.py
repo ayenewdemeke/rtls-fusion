@@ -1,7 +1,7 @@
-# tests/kalman_filter/test_linear_kf_gps_1d.py
+# tests/test_linear_kf_gps_1d.py
 
 import unittest
-from kalman_filter import LinearKFGPS1D
+from sfusion.kalman import LinearKFGPS1D
 
 class TestLinearKFGPS1D(unittest.TestCase):
     def test_predict_update(self):

@@ -1,4 +1,4 @@
-# kalman_filter/__init__.py
+# sfusion/kalman/__init__.py
 
 from .LinearKFGPS1D import LinearKFGPS1D
 from .LinearKFGPS2D import LinearKFGPS2D

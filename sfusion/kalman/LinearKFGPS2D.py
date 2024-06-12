@@ -1,4 +1,4 @@
-# sensor-fusion/kalman_filter/LinearKFGPS2D.py
+# sfusion/kalman/LinearKFGPS2D.py
 
 import numpy as np
 

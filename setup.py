@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='rtls-fusion',
-    version='0.1.2',
+    version='0.1.4',
     description='A Python library for location tracking sensor data fusion',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -11,7 +11,7 @@ setup(
     ],
     author='Ayenew Demeke',
     author_email='ayennew@gmail.com',
-    url='https://github.com/ayenewdemeke/sensor-fusion',
+    url='https://github.com/ayenewdemeke/rtls-fusion',
     packages=find_packages(),
     classifiers=[
         'Programming Language :: Python :: 3',

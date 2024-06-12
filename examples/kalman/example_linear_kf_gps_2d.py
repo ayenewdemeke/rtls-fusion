@@ -1,6 +1,6 @@
-# examples/kalman_filter/linear_kf_gps_2d.py
+# examples/kalman/linear_kf_gps_2d.py
 
-from kalman_filter import LinearKFGPS2D
+from sfusion.kalman import LinearKFGPS2D
 
 # Initial state [x_position, y_position, x_velocity, y_velocity]
 initial_state = [0, 0, 0, 0]

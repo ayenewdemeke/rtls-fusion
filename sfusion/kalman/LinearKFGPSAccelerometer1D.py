@@ -1,11 +1,11 @@
-# sensor-fusion/kalman_filter/LinearKFGPS1D.py
+# sfusion/kalman/LinearKFGPSAccelerometer1D.py
 
 import numpy as np
 
-class LinearKFGPS1D:
+class LinearKFGPSAccelerometer1D:
     def __init__(self, initial_state, initial_covariance, process_noise, measurement_noise):
         """
-        Initialize the Linear Kalman Filter for 1D GPS.
+        Initialize the Linear Kalman Filter for 1D GPS with accelerometer input.
 
         :param initial_state: Initial state vector [position, velocity].
         :param initial_covariance: Initial covariance matrix.
@@ -17,18 +17,22 @@ class LinearKFGPS1D:
         self.process_noise = np.array(process_noise)  # Process noise covariance matrix
         self.measurement_noise = np.array(measurement_noise)  # Measurement noise covariance matrix
 
-    def predict(self, dt):
+    def predict(self, dt, acceleration):
         """
         Predict the next state and covariance.
         
         :param dt: Time step.
+        :param acceleration: Control input (acceleration).
         """
         # State transition matrix
         F = np.array([[1, dt],
                       [0, 1]])
 
+        # Control input matrix
+        B = np.array([0.5 * dt**2, dt])
+
         # Predicted state
-        self.state = F @ self.state
+        self.state = F @ self.state + B * acceleration
 
         # Predicted covariance
         self.covariance = F @ self.covariance @ F.T + self.process_noise

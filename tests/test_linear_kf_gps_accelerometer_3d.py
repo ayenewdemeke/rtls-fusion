@@ -1,7 +1,7 @@
-# tests/kalman_filter/test_linear_kf_gps_accelerometer_3d.py
+# tests/test_linear_kf_gps_accelerometer_3d.py
 
 import unittest
-from kalman_filter import LinearKFGPSAccelerometer3D
+from sfusion.kalman import LinearKFGPSAccelerometer3D
 
 class TestLinearKFGPSAccelerometer3D(unittest.TestCase):
     def test_predict_update(self):
@@ -34,10 +34,10 @@ class TestLinearKFGPSAccelerometer3D(unittest.TestCase):
                                [0.0, 0.0, 0.25, 0.0, 0.0, 1.75]]
         
         for i in range(6):
-            self.assertAlmostEqual(kf.state[i], expected_state[i], places=2)
+            self.assertAlmostEqual(kf.state[i], expected_state[i])
         for i in range(6):
             for j in range(6):
-                self.assertAlmostEqual(kf.covariance[i][j], expected_covariance[i][j], places=2)
+                self.assertAlmostEqual(kf.covariance[i][j], expected_covariance[i][j])
 
 if __name__ == '__main__':
     unittest.main()

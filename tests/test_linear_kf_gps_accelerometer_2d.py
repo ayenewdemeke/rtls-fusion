@@ -1,7 +1,7 @@
-# tests/kalman_filter/test_linear_kf_gps_accelerometer_2d.py
+# tests/test_linear_kf_gps_accelerometer_2d.py
 
 import unittest
-from kalman_filter import LinearKFGPSAccelerometer2D
+from sfusion.kalman import LinearKFGPSAccelerometer2D
 
 class TestLinearKFGPSAccelerometer2D(unittest.TestCase):
     def test_predict_update(self):

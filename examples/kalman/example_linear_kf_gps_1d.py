@@ -1,6 +1,7 @@
-# examples/kalman_filter/linear_kf_gps_gyro_2d_with_orientation.py
+# examples/kalman/linear_kf_gps_accelerometer_gyro_2d_example.py
 
-from kalman_filter import LinearKFGPSGyro2D
+from sfusion.kalman import LinearKFGPSAccelerometerGyro2D
+import numpy as np
 
 # Initial state [x_position, y_position, x_velocity, y_velocity, orientation]
 initial_state = [0, 0, 0, 0, 0]
@@ -20,15 +21,16 @@ process_noise = [[1, 0, 0, 0, 0],
                  [0, 0, 0, 0, 1]]
 
 # Measurement noise covariance matrix
-measurement_noise = [[1, 0],
-                     [0, 1]]
+measurement_noise = [[1, 0, 0],
+                     [0, 1, 0],
+                     [0, 0, 1]]
 
 # Create the filter
-kf = LinearKFGPSGyro2D(initial_state, initial_covariance, process_noise, measurement_noise)
+kf = LinearKFGPSAccelerometerGyro2D(initial_state, initial_covariance, process_noise, measurement_noise)
 
 # Predict and update
-angular_velocity = 0.2  # in radians
-kf.predict(dt=1, angular_velocity=angular_velocity)
+control_input = [1, 1, 0.2]  # [x_acceleration, y_acceleration, angular_velocity]
+kf.predict(dt=1, control_input=control_input)
 kf.update(measurement=[2, 3])
 
 print("State after update:", kf.state)
