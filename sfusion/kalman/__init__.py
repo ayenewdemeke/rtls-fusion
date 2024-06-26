@@ -8,6 +8,8 @@ from .LinearKFGPSAccelerometer2D import LinearKFGPSAccelerometer2D
 from .LinearKFGPSAccelerometer3D import LinearKFGPSAccelerometer3D
 from .LinearKFGPSGyro2D import LinearKFGPSGyro2D
 from .LinearKFGPSAccelerometerGyro2D import LinearKFGPSAccelerometerGyro2D
+from .EKFGPSAccelerometerGyro2D import EKFGPSAccelerometerGyro2D
+from .UKFGPSAccelerometerGyro2D import UKFGPSAccelerometerGyro2D
 
 __all__ = [
     'LinearKFGPS1D',
@@ -17,5 +19,7 @@ __all__ = [
     'LinearKFGPSAccelerometer2D',
     'LinearKFGPSAccelerometer3D',
     'LinearKFGPSGyro2D',
-    'LinearKFGPSAccelerometerGyro2D'
+    'LinearKFGPSAccelerometerGyro2D',
+    'EKFGPSAccelerometerGyro2D',
+    'UKFGPSAccelerometerGyro2D'
     ]
